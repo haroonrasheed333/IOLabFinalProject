@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/freebase/suggest/4_0/suggest.min.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/freebase/suggest/4_0/suggest.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
     <title>Socially</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -15,6 +22,8 @@
       background-size: cover;
     }
 
+    html {overflow-y: scroll;}
+
     .container { 
         margin: 90px auto; 
         padding: 40px; 
@@ -27,37 +36,42 @@
         -webkit-border-radius: 15px;
         -o-border-radius: 15px;
     }
+
+    #map {
+      float: right;
+      width: 440px;
+      height: 300px;
+      margin: 0px 0px 15px 5px;
+      border: 2px solid black;
+    }
+
   </style>
   <body>
     <div class="container">
        <form class="form-search">
         <fieldset>
           <legend>Socially</legend>
-          <input type="text" class="input-xlarge search-query" placeholder="Search for a Person, Place, Event">
-          <button type="submit" class="btn">Search</button>
+          <input type="text" class="input-xlarge search-query" id="myinput" placeholder="Search for a Person, Place, Event">
+              <script type="text/javascript">
+                    $("#myinput")
+                    .suggest({
+                      "key": "AIzaSyDYGo8Upb6LpIa-EHvAi2w44lhLkAK538w",
+                      filter: '(all type:/education/university)'
+                    })
+                    .bind("fb-select", function(e, data) {
+                      //alert(data.name);
+                    });
+              </script>
+          <input type="button" value="Search" id="showResults">
+          <!-- <button type="submit" class="btn" onclick="codeAddress()">Search</button> -->
         </fieldset>
       </form>
- <!--        <div class="row">
-          <div class="span6">
-              <h4>Wikipedia</h4>  
-          </div>
-          <div class="span6">
-            <h4>Twitter</h4>
-          </div> 
-          <div class="span6">
-            <h4>Blogosphere</h4>   
-          </div>
-          <div class="span6">
-            <h4>News</h4>
-          </div>
-          <div class="span6">
-            <h4>Flickr</h4>   
-          </div>
-          <div class="span6">
-            <h4>Youtube</h4>
-          </div>
-      </div> -->
+
+      <div id="contents" style="display: none">
+        <div id="map"></div>
+      </div>
     </div>
+
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
