@@ -1,0 +1,170 @@
+#wrapper{
+	width:100%;
+	float:left;
+	display:block;
+
+}
+#container1
+{
+	clear:both;
+	width:80%;
+	float:left;
+	display:block;
+	background-color:Pink;
+
+}
+#wikihead
+{
+	background-color:Yellow;
+	clear:both;
+	height:50px;
+	width:80%;
+	margin:auto;
+}
+#wikidiv
+{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:200px;
+	width:80%;
+}
+#wikidiv1
+
+{  
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:65%;
+	height:100%;
+	background-color:Yellow;
+	
+}
+#wikidiv2
+{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:30%;
+	height:100%;
+	background-color:Red;
+}
+#newshead
+{
+	clear:both;
+	margin:auto;
+	height:50px;
+	width:80%;
+	background-color:Yellow;
+}
+#newsdiv{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:500px;
+	width:80%;
+}
+#newsdivtop
+{  
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+	
+}
+#newsdivtop1
+{
+	clear:both;
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Pink;
+}
+#newsdivtop2
+{
+	margin:auto;
+	margin:5px;
+	float:left;
+	width:32%;
+	height:100%;
+	background-color:Red;
+}
+#newsdivtop3
+{
+	margin:auto;
+	margin:5px;
+	float:left;
+	width:32%;
+	height:100%;
+	background-color:Grey;
+	
+}
+#newsdivbot
+{
+	clear:both;
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+}
+#newsdivbot1{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Grey;
+}
+#newsdivbot2
+{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Blue;
+}
+#newsdivbot3
+{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Red;
+}
+#mediahead
+{
+	clear:both;
+	margin:auto;
+	height:50px;
+	width:80%;
+	background-color:Yellow;
+}
+#mediadiv
+{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:500px;
+	width:80%;
+}
+
+#mediadivtop
+{
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+}
+#mediadivtop1
+{
+	float:left;
+
+	margin:5px;
+	width:70%;
+	height:auto%;
+	background-color:Pink;
+}
