@@ -24,7 +24,7 @@ $(function() {
         console.log(results[0].geometry.location);
         if (status == google.maps.GeocoderStatus.OK) {
              var mapOptions = {
-              zoom: 14,
+              zoom: 15,
               center: results[0].geometry.location,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             }

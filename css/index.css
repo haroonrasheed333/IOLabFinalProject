@@ -1,17 +1,26 @@
 body { 
-  background: url(img/bg.png) no-repeat center center fixed; 
+  background: url(../img/bg.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-#wrapper{
-	width:100%;
-	float:left;
-	display:block;
+html {overflow-y: scroll;}
 
+.container { 
+    margin: 90px auto; 
+    padding: 40px 40px; 
+    background: #778899; 
+    -moz-box-shadow: 0 0 20px black; 
+    -webkit-box-shadow: 0 0 20px black; 
+    box-shadow: 0 0 20px black; 
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
 }
+
 #container1
 {
 	clear:both;
@@ -41,22 +50,22 @@ body {
 
 {  
 	float:left;
-	margin:auto;
 	margin:5px;
-	width:65%;
+	width:49%;
 	height:100%;
 	background-color:Yellow;
 	
 }
-#wikidiv2
-{
-	float:left;
-	margin:auto;
-	margin:5px;
-	width:30%;
-	height:100%;
-	background-color:Red;
+
+#map {
+  float: right;
+  width: 49%;
+  height: 100%;
+  margin: 5px;
 }
+
+
+
 #newshead
 {
 	clear:both;
@@ -170,32 +179,9 @@ body {
 #mediadivtop1
 {
 	float:left;
-
 	margin:5px;
 	width:70%;
 	height:auto%;
 	background-color:Pink;
 }
 
-html {overflow-y: scroll;}
-
-.container { 
-    margin: 90px auto; 
-    padding: 40px; 
-    background: white; 
-    -moz-box-shadow: 0 0 20px black; 
-    -webkit-box-shadow: 0 0 20px black; 
-    box-shadow: 0 0 20px black; 
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -o-border-radius: 15px;
-}
-
-#map {
-  float: right;
-  width: 440px;
-  height: 300px;
-  margin: 0px 0px 15px 5px;
-  border: 2px solid black;
-}
