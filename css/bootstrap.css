@@ -66,15 +66,6 @@ sub {
   bottom: -0.25em;
 }
 
-img {
-  width: auto\9;
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-}
-
 #map_canvas img {
   max-width: none;
 }
@@ -219,6 +210,18 @@ a:hover {
   min-height: 1px;
   margin-left: 20px;
 }
+.container { 
+        margin: 20px auto; 
+        padding:10px;
+        background: black; 
+        -moz-box-shadow: 0 0 20px black; 
+        -webkit-box-shadow: 0 0 20px black; 
+        box-shadow: 0 0 20px black; 
+        border-radius: 15px;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        -o-border-radius: 15px;
+    }
 
 .container,
 .navbar-static-top .container,
@@ -717,7 +720,7 @@ ol ul {
 }
 
 li {
-  line-height: 20px;
+    display:inline;
 }
 
 ul.unstyled,
@@ -910,7 +913,7 @@ fieldset {
 }
 
 legend {
-  display: block;
+  display: none;
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
