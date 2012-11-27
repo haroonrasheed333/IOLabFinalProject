@@ -26,24 +26,17 @@ $(document).ready(function() {
 function getVid(input) {
     var youtubeURL =  'http://gdata.youtube.com/feeds/api/videos?q=' + query + '&alt=json-in-script&callback=?&max-results=10';
 
-    //get tweets and process
     $.getJSON(youtubeURL, function(json){
-     var   feed = json.feed;
-        //showMyVideos2(videos)
+    var feed = json.feed;
 	var entries = feed.entry || [];
 	var html = ['<ul class="videos">'];
 	for (var i = 0; i < entries.length; i++) {
 		var entry = entries[i];
-		var title = entry.title.$t.substr(0, 20);
 		var thumbnailUrl = entries[i].media$group.media$thumbnail[0].url;
 		var playerUrl = entries[i].media$group.media$content[0].url;
-		html.push('<li>', '<a class="fancybox-media" href="', playerUrl, '"><img src="', 
-             thumbnailUrl, '" width="130" height="97"/></a>', '</li>');
+		html.push('<li>', '<a class="fancybox-media" href="', playerUrl, '"><img src="', thumbnailUrl, '" width="130" height="97"/></a>', '</li>');
 	}
 	html.push('</ul><br style="clear: left;"/>');
 	document.getElementById('videos2').innerHTML = html.join('');
-	if (entries.length > 0) {
-		loadVideo(entries[0].media$group.media$content[0].url, false);
-	}
     });
 }
