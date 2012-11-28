@@ -1,4 +1,9 @@
 var query;
+var query1;
+var result;
+var title;
+var abstract;
+var urll;
 
 $(document).ready(function() {
 	$('.fancybox-media')
@@ -18,8 +23,10 @@ $(document).ready(function() {
 	$('#showme').on('click',function(e){
 		query = $('#searchField').val();
 		query = query.replace(" ", "%20")
-        query = query.toLowerCase();            
+        query = query.toLowerCase();       
+        query1 = query.replace("%20", " ")
     	getVid();
+    	getNYTimes();
 	});
 });
 
@@ -39,4 +46,32 @@ function getVid(input) {
 	html.push('</ul><br style="clear: left;"/>');
 	document.getElementById('videos2').innerHTML = html.join('');
     });
+}
+
+function getNYTimes(input) {
+    var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + query1 + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303';
+	var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
+	$.getJSON(phpproxy, {"url": articleURL}, function(data){
+		console.log(data.results[0]);
+		var html = ['<ul class="news">'];
+		for (var i = 0; i < 5; i++)  {
+    		var url = data.results[i].url;    		
+    		var phpproxy2 = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?'
+    		var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303';
+    		$.getJSON(phpproxy2, {"url": newsURL}, function(data2){
+    			console.log(data2);
+    			result = data2.results[0];
+    			title = result.title;
+    			abstract = result.abstract;
+    			urll = result.url;
+    			console.log(title);
+    			//html.push('<li>Title: ', title , ' Abstract: ', abstract, ' url=', urll , '</li>');
+    			$('<li></li>').html('Title: ' + title + ' Abstract: ' + abstract + ' url=' + urll)
+    		    .appendTo('.news');
+    		});
+    	}
+    	html.push('</ul><br/>');
+    	document.getElementById('news2').innerHTML = html.join('');
+
+	});
 }

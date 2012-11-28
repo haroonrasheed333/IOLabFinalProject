@@ -14,3 +14,13 @@ ul.videos {
 .fancybox-custom .fancybox-skin {
 	box-shadow: 0 0 50px #222;
 }
+
+ul.news li {
+	margin-bottom: 1em;
+}
+
+ul.news {
+	margin-bottom: 1em;
+	padding-left : 0em;
+	margin-left: 0em;
+}
