@@ -53,9 +53,21 @@ html {overflow-y: scroll;}
 	margin:5px;
 	width:49%;
 	height:100%;
-	background-color:Yellow;
+	background-color:white;
+	overflow: scroll;
+	text-align: justify;
+}	
+
+#description
+
+{  
+	margin:5px;
+	padding: 5px;
+	background-color:white;
 	
 }
+
+
 
 #map {
   float: right;

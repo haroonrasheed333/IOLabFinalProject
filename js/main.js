@@ -5,6 +5,7 @@
 $(function() {
     $('#showResults').click(function() {
         codeAddress();
+        getDescription();
         showResults();
     });
 });
@@ -28,11 +29,7 @@ $(function() {
               center: results[0].geometry.location,
               mapTypeId: google.maps.MapTypeId.ROADMAP
             }
-            map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
-
-          //map.setCenter(results[0].geometry.location);
-
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
           var marker = new google.maps.Marker({
               map: map,
               position: results[0].geometry.location
@@ -46,4 +43,17 @@ $(function() {
     function showResults() {
       var ele = document.getElementById('contents');
         ele.style.display = "block";
+    }
+
+    function getDescription() {
+      var university =document.getElementById("myinput").value.replace(/ /g,"_").replace( /,/g, "" ).toLowerCase();
+      console.log(university);
+
+      var freebaseURL =  'https://www.googleapis.com/freebase/v1/text/en/'+ university;
+      console.log(freebaseURL);
+      $.getJSON(freebaseURL, function(json){
+        var feed = json.result;
+        console.log(feed);
+        $("#wikidiv1").append('<p id="description">' + feed + '</p>');
+      });
     }
