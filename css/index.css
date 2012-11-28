@@ -1,3 +1,23 @@
+h2 {
+    font-family:georgia,serif;font-size:35px;
+    font-style:italic;
+    color:#980000 ;
+    letter-spacing:0;
+    line-height:1.429em;
+    padding:0;
+    text-align:left;
+    text-decoration:underline
+}
+ 
+h2 span {
+    font-family:baskerville,'palatino linotype',georgia,serif;
+        font-size:50px;
+    font-weight:100;
+    text-decoration:underline
+ 
+ 
+}
+
 body { 
   background: url(../img/bg.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -27,16 +47,17 @@ html {overflow-y: scroll;}
 	width:80%;
 	float:left;
 	display:block;
-	background-color:Pink;
+	background-color:Black;
 
 }
 #wikihead
 {
-	background-color:Yellow;
+	
 	clear:both;
 	height:50px;
 	width:80%;
 	margin:auto;
+	background: linear-gradient(top, black 0%, white 100%); 
 }
 #wikidiv
 {
@@ -56,25 +77,15 @@ html {overflow-y: scroll;}
 	background-color:white;
 	overflow: scroll;
 	text-align: justify;
-}	
-
-#description
-
-{  
+}
+#wikidiv2
+{
+	float:right;
 	margin:5px;
-	padding: 5px;
-	background-color:white;
-	
-}
-
-#map {
-  float: right;
-  width: 49%;
-  height: 100%;
-  margin: 5px;
-}
-
-
+	width:49%;
+	height:100%;
+	background-color:Black;
+}	
 
 #newshead
 {
@@ -82,7 +93,7 @@ html {overflow-y: scroll;}
 	margin:auto;
 	height:50px;
 	width:80%;
-	background-color:Yellow;
+	background-color:Black;
 }
 #newsdiv{
 	padding:5px;
@@ -118,7 +129,7 @@ html {overflow-y: scroll;}
 	float:left;
 	width:32%;
 	height:100%;
-	background-color:Red;
+	background-color:Black;
 }
 #newsdivtop3
 {
@@ -127,7 +138,7 @@ html {overflow-y: scroll;}
 	float:left;
 	width:32%;
 	height:100%;
-	background-color:Grey;
+	background-color:Black;
 	
 }
 #newsdivbot
@@ -144,7 +155,7 @@ html {overflow-y: scroll;}
 	margin:5px;
 	width:32%;
 	height:100%;
-	background-color:Grey;
+	background-color:Black;
 }
 #newsdivbot2
 {
@@ -153,7 +164,7 @@ html {overflow-y: scroll;}
 	margin:5px;
 	width:32%;
 	height:100%;
-	background-color:Blue;
+	background-color:Black;
 }
 #newsdivbot3
 {
@@ -162,7 +173,7 @@ html {overflow-y: scroll;}
 	margin:5px;
 	width:32%;
 	height:100%;
-	background-color:Red;
+	background-color:Black;
 }
 #mediahead
 {
@@ -170,7 +181,7 @@ html {overflow-y: scroll;}
 	margin:auto;
 	height:50px;
 	width:80%;
-	background-color:Yellow;
+	
 }
 #mediadiv
 {
@@ -193,7 +204,8 @@ html {overflow-y: scroll;}
 	float:left;
 	margin:5px;
 	width:70%;
-	height:auto%;
-	background-color:Pink;
+	height:450px;
+	background-color:Black;
+	overflow:auto;
 }
 
