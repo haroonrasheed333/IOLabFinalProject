@@ -1,8 +1,10 @@
 $(document).ready(function() {
-  
+
   $('#fetch').click(function() {
 
-    var t = "UC Berkeley";
+    var t = $('#search').val();
+
+    
     console.log(t);
   
     var theHtml="";
@@ -13,8 +15,8 @@ $(document).ready(function() {
                 console.log("here");
                 $.each(data.items, function(i,item) {
                   console.log("here");
-                  theHtml += '<li><a href="' + item.media.m.replace("_m", "") + '" target="_blank">';
-                  theHtml += '<img height="75px" width="75px" title="' + item.title +
+                  theHtml += '<li><a class=fancybox href="' + item.media.m.replace("_m", "") + '" target="_blank">';
+                  theHtml += '<img height="150px" width="150px" title="' + item.title +
                     '" src="' + item.media.m.replace("_m", "") + '" alt="' + item.title + '" />';
                   theHtml += '</a></li>';
                 });

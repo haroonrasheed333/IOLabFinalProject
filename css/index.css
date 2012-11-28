@@ -187,6 +187,7 @@ h2 span {
 
 	margin:5px;
 	width:70%;
-	height:auto%;
+	height:450px;
 	background-color:Black;
+	overflow:auto;
 }

@@ -6,8 +6,11 @@
 
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/index.css" rel="stylesheet" media="screen">
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <link href="css/jquery.fancybox.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox-media.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
     <script src="js/bootstrap.js"></script>
   </head>
   <style>
@@ -29,16 +32,16 @@
             <fieldset> 
               <legend>Socially</legend>
               <input type="text" class="input-xlarge search-query" placeholder="Search for a Person, Place, Event">
-              <button  id="fetch" class="btn">Search</button>
+              <button  id="fetch" class="btn" id="search">Search</button>
             </fieldset>
         </div>
         
-        <div id="wikihead"></div>
+        <div id="wikihead"><h2><span>W</span>iki <strong>&amp;</strong><em> Trivia </em></h2></div>
         <div id="wikidiv">
             <div id="wikidiv1"></div>
             <div id="wikidiv2"></div>
         </div>
-        <div id="newshead"></div>
+        <div id="newshead"><h2><span>N</span>ews <strong></h2></div>
         <div id="newsdiv">
             <div id="newsdivtop">
               <div id="newsdivtop1"></div>
@@ -54,7 +57,7 @@
 
         </div>
 
-        <div id="mediahead"></div>
+        <div id="mediahead"><h2><span>S</span>ocial<em> Media </em></h2></div>
         <div id="mediadiv">
             <div id="mediadivtop">
               <div id="mediadivtop1" >
