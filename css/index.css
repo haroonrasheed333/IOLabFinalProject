@@ -67,8 +67,6 @@ html {overflow-y: scroll;}
 	
 }
 
-
-
 #map {
   float: right;
   width: 49%;
@@ -112,7 +110,7 @@ html {overflow-y: scroll;}
 	background-color:Pink;
 	overflow: scroll;
 	text-align: justify;
-}
+ }
 #newsdivtop2
 {
 	margin:auto;
