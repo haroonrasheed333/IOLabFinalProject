@@ -48,25 +48,35 @@
     }
 
     // Function to get twitter feed
-    function getTwitter(){
+    // Function to get twitter feed
+   function getTwitter(){
       $('#twitter').empty();
       var twitterQuery = queryTerm;
       twitterQuery = twitterQuery.replace(/\s+/g,"%20");
-      var tweetURL =  'http://search.twitter.com/search.json?q=%23' + twitterQuery + '&callback=?&include_entities=true&rpp=100';
+      var tweetURL =  'http://search.twitter.com/search.json?q=' + twitterQuery + '&callback=?&include_entities=true&rpp=100';
       
       $.getJSON(tweetURL, function(json){
+        var j=0;
         tweets = json.results;
+        console.log(tweets.length)
         if(tweets.length == 0)
         {
             console.log("No tweets");
         }
         else 
         {  
-            for(var i = 0; i < 10; i++) 
-            {
-             
-
-              $('#twitter').append('<li class="term">'+ tweets[i].text +'</li>')
+            for(var i = 0; i < tweets.length && j<10; i++) 
+            {           
+                var tweet = tweets[i].text
+                for (var a = 0, n = tweet.length; a < n; a++) {
+                    if (tweet.charCodeAt( i ) > 255) { 
+                      console.log(tweet);
+                      continue;
+                       }
+                    }
+                    
+              $('#twitter').append('<li class="term">'+ tweet +'</li>')
+              j += 1;
             }  
                  
           };
