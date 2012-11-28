@@ -83,11 +83,43 @@
         });
       };
 
+     
+      function getGooglenews(){
+
+        $('#googlenews').empty();
+        var googleQuery = queryTerm;
+        googleQuery = googleQuery.replace(/\s+/g,"%20");
+        var googleURL = 'http://ajax.googleapis.com/ajax/services/search/news?v=1.0&q='+googleQuery +'&callback=?';
+        
+        $.getJSON(googleURL, function(json){
+          googleResults = json.responseData.results;
+          console.log(googleResults.length)
+          if(googleResults.length == 0)
+          {
+              console.log("No News from GoogleNews");
+          }
+          else 
+          {  
+              for(var i = 0; i < googleResults.length; i++) 
+              {
+                 var newsContent = googleResults[i].content
+                 newsContent = newsContent.replace(/<b>/g,"");
+                  newsContent = newsContent.replace(/<\/b>/g,"");     
+     
+                $('#googlenews').append('<li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">"'+ googleResults[i].titleNoFormatting+'</li>');
+
+              }  
+                   
+            };
+          });
+      }
+
      $('#showResults').click(function() {
       queryTerm = $('#myinput').val();
         codeAddress();
         getDescription();
         showResults();
         getTwitter();
+        getGooglenews();
     });
 });
