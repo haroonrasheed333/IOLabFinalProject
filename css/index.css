@@ -110,6 +110,8 @@ html {overflow-y: scroll;}
 	width:32%;
 	height:100%;
 	background-color:Pink;
+	overflow: scroll;
+	text-align: justify;
 }
 #newsdivtop2
 {
