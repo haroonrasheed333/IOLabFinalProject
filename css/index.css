@@ -29,6 +29,11 @@ h2 span {
 	display: inline;
 }
 
+#newsdivbot1 ul li {
+	display: inline;
+}
+
+
 body { 
   background: url(../img/bg.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -164,8 +169,8 @@ html {overflow-y: scroll;}
 	float:left;
 	margin:auto;
 	margin:5px;
-	width:32%;
-	height:100%;
+	width:50%;
+	height:auto;
 	background-color:Black;
 }
 #newsdivbot2
