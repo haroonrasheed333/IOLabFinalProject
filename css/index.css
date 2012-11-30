@@ -18,6 +18,10 @@ h2 span {
  
 }
 
+h3{
+	color:#980000 ;
+	font-family: Old English Text MT;
+}
 #imgFlick {
 	height: 75px;
 	width: 75px;
@@ -128,13 +132,12 @@ html {overflow-y: scroll;}
 }
 #newsdivtop1
 {
-	clear:both;
-	float:left;
 	margin:auto;
 	margin:5px;
+	float:left;
 	width:32%;
 	height:100%;
-	background-color:Pink;
+	background-color:Black;
 	overflow: scroll;
 	text-align: justify;
  }
@@ -146,6 +149,8 @@ html {overflow-y: scroll;}
 	width:32%;
 	height:100%;
 	background-color:Black;
+	overflow: scroll;
+	text-align: justify;
 }
 #newsdivtop3
 {
@@ -155,6 +160,8 @@ html {overflow-y: scroll;}
 	width:32%;
 	height:100%;
 	background-color:Black;
+	overflow: scroll;
+	text-align: justify;
 	
 }
 #newsdivbot
