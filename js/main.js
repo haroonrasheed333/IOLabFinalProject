@@ -82,7 +82,7 @@
         });
       };
 
-     
+      // Function to get Google News
       function getGooglenews(){
 
         $('#googlenews').empty();
@@ -112,8 +112,12 @@
             };
           });
       }
-  function bingNewsSearch(query, service)
+    // Function to get Bing News
+    function getBing()
     {
+      service = 'News';
+      $('#bing').empty();
+      var query = queryTerm;
       $.getJSON('http://people.ischool.berkeley.edu/~haroon/IOLab/bing_proxy.php?callback=?', {q: query, sop: service}, function(data)
       {
         if (data.d !== undefined)
@@ -128,9 +132,10 @@
         }
       });
     }
-      function getNYTimes(){
+    // Function to get NY Times News
+      function getNYTimes1(){
 
-        $('#googlenews').empty();
+        $('#nytimes').empty();
         var Query = queryTerm;
         Query = Query.replace(/\s+/g,"+");
         var URL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + Query + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
@@ -158,8 +163,10 @@
       }
 
 
-       function getNYTimes2(input) {
-      query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
+       function getNYTimes(){
+        $('#nytimes').empty();
+        var query1 = queryTerm;
+      // query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
         var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + query1 + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
       // var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
       // $.getJSON(phpproxy, {"url": articleURL}, function(data){
@@ -171,9 +178,8 @@
         var html = ['<ul class="news">'];
         for (var i = 0; i < 5; i++)  {
             var url = data.results[i].url;        
-            var phpproxy2 = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?'
-            var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303';
-            $.getJSON(phpproxy2, {"url": newsURL}, function(data2){
+            var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303&callback=?';
+            $.getJSON(newsURL, function(data2){
               console.log(data2);
               result = data2.results[0];
               title = result.title;
@@ -261,7 +267,7 @@
         getFlickr();
         getVid();
         getNYTimes();
-        bingNewsSearch(queryTerm, "News");
+        getBing();
         showResults();
     });
 });
