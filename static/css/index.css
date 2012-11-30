@@ -1,0 +1,243 @@
+h2 {
+    font-family:georgia,serif;font-size:35px;
+    font-style:italic;
+    color:#980000 ;
+    letter-spacing:0;
+    line-height:1.429em;
+    padding:0;
+    text-align:left;
+    text-decoration:underline
+}
+ 
+h2 span {
+    font-family:baskerville,'palatino linotype',georgia,serif;
+        font-size:50px;
+    font-weight:100;
+    text-decoration:underline
+ 
+ 
+}
+
+h3{
+	color:#980000 ;
+	font-family: Old English Text MT;
+}
+#imgFlick {
+	height: 75px;
+	width: 75px;
+	padding:5px;
+} 
+
+
+#mediadivtop1 ul li {
+	display: inline;
+}
+
+#newsdivbot1 ul li {
+	display: inline;
+}
+
+
+body { 
+  background: url(../img/bg.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html {overflow-y: scroll;}
+
+.container { 
+    margin: 20px auto; 
+    padding: 10px; 
+    background: black; 
+    -moz-box-shadow: 0 0 20px black; 
+    -webkit-box-shadow: 0 0 20px black; 
+    box-shadow: 0 0 20px black; 
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+#container1
+{
+	clear:both;
+	width:80%;
+	float:left;
+	display:block;
+	background-color:Black;
+
+}
+#wikihead
+{
+	
+	clear:both;
+	height:50px;
+	width:80%;
+	margin:auto;
+	background: linear-gradient(top, black 0%, white 100%); 
+}
+#wikidiv
+{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:200px;
+	width:80%;
+}
+#wikidiv1
+
+{  
+	float:left;
+	margin:5px;
+	width:49%;
+	height:100%;
+	background-color:white;
+	overflow: scroll;
+	text-align: justify;
+}
+#wikidiv2
+{
+	float:right;
+	margin:5px;
+	width:49%;
+	height:100%;
+	background-color:Black;
+}	
+
+#newshead
+{
+	clear:both;
+	margin:auto;
+	height:50px;
+	width:80%;
+	background-color:Black;
+}
+#newsdiv{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:500px;
+	width:80%;
+}
+#newsdivtop
+{  
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+	
+}
+#newsdivtop1
+{
+	margin:auto;
+	margin:5px;
+	float:left;
+	width:32%;
+	height:100%;
+	background-color:Black;
+	overflow: scroll;
+	text-align: justify;
+ }
+#newsdivtop2
+{
+	margin:auto;
+	margin:5px;
+	float:left;
+	width:32%;
+	height:100%;
+	background-color:Black;
+	overflow: scroll;
+	text-align: justify;
+}
+#newsdivtop3
+{
+	margin:auto;
+	margin:5px;
+	float:left;
+	width:32%;
+	height:100%;
+	background-color:Black;
+	overflow: scroll;
+	text-align: justify;
+	
+}
+#newsdivbot
+{
+	clear:both;
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+}
+#newsdivbot1{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:50%;
+	height:auto;
+	background-color:Black;
+}
+#newsdivbot2
+{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Black;
+}
+#newsdivbot3
+{
+	float:left;
+	margin:auto;
+	margin:5px;
+	width:32%;
+	height:100%;
+	background-color:Black;
+}
+#mediahead
+{
+	clear:both;
+	margin:auto;
+	height:50px;
+	width:80%;
+	
+}
+#mediadiv
+{
+	padding:5px;
+	clear:both;
+	margin:auto;
+	height:500px;
+	width:80%;
+}
+
+#mediadivtop
+{
+	padding:5px;
+	margin:auto;
+	height:50%;
+	width:100%;
+}
+#mediadivtop1
+{
+	float:left;
+	margin:5px;
+	width:45%;
+	height:auto;
+	background-color:Black;
+
+}
+#mediadivtop2
+{
+	float:left;
+	margin:5px;
+	width:45%;
+	height:auto;
+	background-color:Black;
+	
+}
+
