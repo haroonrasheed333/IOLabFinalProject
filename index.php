@@ -19,10 +19,46 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/index.css" rel="stylesheet" media="screen">
+	<script type="text/javascript">
+	$(function() {
+		$(".submit").click(function() {
+			var name = $("#name").val();
+			var email = $("#email").val();
+			var comment = $("#comment").val();
+			var post_id = $("#post_id_value").val();
+			var dataString = 'name='+ name + '&email=' + email + '&comment=' + comment + '&post_id=' + post_id;
+			if(name=='' || email=='' || comment=='')
+				 {
+					alert('Please Give Valid Details');
+				 }
+			else
+				{
+					$("#flash").show();
+					$("#flash").fadeIn(400).html('<img src="img/fancybox_loading.gif" align="absmiddle">&nbsp;<span class="loading">Updating Comment...</span>');
+					$.ajax({
+						type: "POST",
+						url: "commentajax.php",
+						data: dataString,
+						cache: false,
+						success: function(html){
+							$("ol#update").append(html);
+							$("ol#update li:last").fadeIn("slow");
+							document.getElementById('email').value='';
+							document.getElementById('name').value='';
+							document.getElementById('comment').value='';
+							$("#name").focus();
+							$("#flash").hide();
+						}
+					});
+				}
+			return false;
+		});
+	});
+	</script>
   </head>  
   <body>
-       <div class="wrapper">
-        <div class="container">
+	<div id="wrapper">
+    <div class="container">
               <div id="title"><p>University Briefs...</p></div>
               <div id="bkimg"><img style="height:400px width:400px;" src="img/univ.png"/></div>
             <div id="searchbtn" style="float:left">
@@ -41,15 +77,13 @@
               <!-- <button type="submit" class="btn" onclick="codeAddress()">Search</button> -->
             </div>
         </div>
-    
-        <div id="contents" style="display: none">
+    <div id="mainContent" style="display: none">
+	<div id="contents">
 
           <!--<div id="wikihead"></div> -->
           
           <div id="wikidiv">
-            <h3>INFO</h3>
-              <div id="wikidiv1">
-                
+              <div id="wikidiv1">           
               </div>
               <div id="wikidiv2"> </div>
           </div>
@@ -95,7 +129,7 @@
                 </div>
                 <div id="newsdivtop2">
                   <h3>BING</h3>
-                    <div id="bnews">
+                      <div id="bnews">
                      <ul id="bingnews"></ul>
                    </div>
                 </div>
@@ -105,22 +139,43 @@
         
             <div id="newsdivbot">
               <div id="newsdivbot1"> 
-                <h3>GUARDIAN</h3>
-                     <ul id="googlenews"></ul>
+                <h3>NY TIMES</h3>
+                <div id="nynews">
+                     <ul id="nytimes"></ul>
+                   </div>
 
               </div>
               <div id="newsdivbot2"> 
-                <h3>ABC NEWS</h3>
-                <ul id="googlenews"></ul>
+                <h3> GUARDIAN</h3>
+                  <div id="guardnews">
+                     <ul id="guardian"></ul>
+                   </div>>
 
               </div>
             </div>
 
           </div>
-          <div id="blog">
-          </div>
     
 
-</div>
+	</div>
+
+	<div id="comments">
+    <h3 > COMMENTS</h3>
+			<ol id="update" class="timeline"></ol>
+			<div id="flash" align="left"  ></div>
+			<div id="comm">
+			<form action="#" method="post">
+			<span class=sub>Name</span><span class="star">*</span><input type="text" name="title" id="name"/><br />
+			<span class=sub>Email</span><span class="star">*</span><input type="text" name="email" id="email"/><br />
+			<textarea name="comment" id="comment"></textarea><br />
+     <input type="submit" class="btn" value="Add Comment" />
+
+
+			</form>
+			</div>
+	</div>
+	
+	</div>
+	</div>
   </body>
 </html>

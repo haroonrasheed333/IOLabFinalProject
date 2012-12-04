@@ -32,6 +32,8 @@
     function showResults() {
       var ele = document.getElementById('contents');
         ele.style.display = "block";
+		var ele = document.getElementById('comments');
+        ele.style.display = "block";
     }
 
     function getDescription() {
@@ -96,7 +98,7 @@
         var entry = entries[i];
         var thumbnailUrl = entries[i].media$group.media$thumbnail[0].url;
         var playerUrl = entries[i].media$group.media$content[0].url;
-        html.push('<li>', '<a class="fancybox-media" href="', playerUrl, '"><img id="imgyoutube" src="', thumbnailUrl, '" width="130" height="97"/></a>', '</li>');
+        html.push('<li>', '<a class="fancybox-media" href="', playerUrl, '"><img id="imgyoutube" src="', thumbnailUrl, '" width="80" height="70"/></a>', '</li>');
       }
       html.push('</ul><br style="clear: left;"/>');
       document.getElementById('youtube').innerHTML = html.join('');
@@ -128,25 +130,98 @@
         $.getJSON(googleURL, function(json){
           googleResults = json.responseData.results;
           console.log(googleResults.length)
+          var j=0;
           if(googleResults.length == 0)
           {
               console.log("No News from GoogleNews");
           }
           else 
           {  
-              for(var i = 0; i < googleResults.length; i++) 
+              for(var i = 0; i < googleResults.length && j<5; i++) 
               {
                  var newsContent = googleResults[i].content
                  newsContent = newsContent.replace(/<b>/g,"");
                  newsContent = newsContent.replace(/<\/b>/g,"");     
      
-                $('#googlenews').append('<hr><li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">"'+ googleResults[i].titleNoFormatting+'</li></hr>');
-
+                $('#googlenews').append('<hr><li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">'+ googleResults[i].titleNoFormatting+'</li></hr>');
+                j += 1;
               }  
                    
             };
           });
       }
+      // Function to get Bing News
+      function getBing()
+      {
+        service = 'News';
+        $('#bing').empty();
+        var query = queryTerm;
+        $.getJSON('http://people.ischool.berkeley.edu/~haroon/IOLab/bing_proxy.php?callback=?', {q: query, sop: service}, function(data)
+        {
+          if (data.d !== undefined)
+          {
+            var j=0;
+            var items = data.d.results;
+            for (var i = 0 ; i < items.length && j<5; i++)
+            {
+              var item = items[i];
+              $('#bingnews').append('<hr><li class="term"><a href="'+item.Url+'" title="'+item.Description+'">'+ item.Title+'</li>');
+              j += 1;
+            }
+          }
+        });
+      }
+
+      function getNYTimes(){
+        $('#nytimes').empty();
+        var query1 = queryTerm;
+      query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
+      var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + query1 + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
+      var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?';
+      $.getJSON(phpproxy, {"url": articleURL}, function(data){
+        console.log(data.results);
+        var j= 0;
+        for(var i = 0; i < 5; i++) {
+            var url = data.results[i].url;        
+            var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303&callback=?';
+                var phpproxy2 = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?';
+            $.getJSON(phpproxy2, {"url": newsURL}, function(data2){
+              console.log(data2);
+              result = data2.results[0];
+              title = result.title;
+              abstract = result.abstract;
+              urll = result.url;
+              console.log(title);
+              $('#nytimes').append('<hr><li class="term"><a href="'+urll+'" title="'+abstract+'">'+ title+'</li>');
+
+            });
+            j += 1;
+          }
+          
+        });
+      }
+
+      function getGuardian()
+      {
+        $('#guardian').empty();
+        query1 = queryTerm.replace(/ /g,"+").toLowerCase();
+        query1 = query1.replace(',',"").toLowerCase();
+        var articleURL = 'http://content.guardianapis.com/search?q='+query1+'&order-by=relevance&format=json&api-key=ssjsvj7a5r66rfkd9wcedke9';
+        var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?';
+        $.getJSON(phpproxy, {"url": articleURL}, function(data){
+          if (data.response !== undefined)
+          {
+            var items = data.response.results;
+            for (var i = 0; i < 5; i++)  
+            {
+              var item = items[i];
+              $('#guardian').append('<hr><li class="term"><a href="'+item.webUrl+'" title="'+item.webTitle+'">'+item.webTitle+'</li>');
+            
+            }
+          }
+        });
+      }
+
 
       function getFlickr(){
         $('#flickr').empty();
@@ -159,7 +234,7 @@
                 console.log("here");
                 $.each(data.items, function(i,item) {
                   console.log("here");
-                  theHtml += '<li><a href="' + item.media.m.replace("_m", "") + '" target="_blank">';
+                  theHtml += '<li><a class="fancybox-media" href="' + item.media.m.replace("_m", "") + '" target="_blank">';
                   theHtml += '<img id="imgFlick" height="150px" width="150px" title="' + item.title +
                     '" src="' + item.media.m.replace("_m", "") + '" alt="' + item.title + '" />';
                   theHtml += '</a></li>';
@@ -172,14 +247,13 @@
       }
 
 
-    /*  function getComments()
+    function getComments()
       {
-
         var queryTerm = $('#myinput').val();
         var dataString = 'queryTerm='+ queryTerm;
       {
         $("#flash").show();
-        $("#flash").fadeIn(400).html('<img src="ajax.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
+        $("#flash").fadeIn(400).html('<img img src="img/fancybox_loading.gif" align="absmiddle">&nbsp;<span class="loading">Loading Comment...</span>');
         $.ajax({
           type: "POST",
           url: "displayajax.php",
@@ -191,73 +265,31 @@
             document.getElementById('email').value='';
             document.getElementById('name').value='';
             document.getElementById('comment').value='';
-            $("#name").focus();
             $("#flash").hide();
           }
         });
       }
-    var ele = document.getElementById('comments');
+    var ele = document.getElementById('mainContent');
     ele.style.display = "block";
     return false;
 
-      }*/
-
-
-   /* function addComments(){
-      var name = $("#name").val();
-    var email = $("#email").val();
-    var comment = $("#comment").val();
-    var post_id = $("#post_id_value").val();
-    var dataString = 'name='+ name + '&email=' + email + '&comment=' + comment + '&post_id=' + post_id;
-    if(name=='' || email=='' || comment=='')
-       {
-        alert('Please Give Valid Details');
-       }
-    else
-      {
-        $("#flash").show();
-        $("#flash").fadeIn(400).html('<img src="ajax.gif" align="absmiddle">&nbsp;<span class="loading">Updating Comment...</span>');
-        $.ajax({
-          type: "POST",
-          url: "commentajax.php",
-          data: dataString,
-          cache: false,
-          success: function(html){
-            $("ol#update").append(html);
-            $("ol#update li:last").fadeIn("slow");
-            document.getElementById('email').value='';
-            document.getElementById('name').value='';
-            document.getElementById('comment').value='';
-            $("#name").focus();
-            $("#flash").hide();
-          }
-        });
       }
-    return false;
-
-    } */
 
      $('#showResults').click(function() {
       queryTerm = $('#myinput').val();
 
-        /*getComments();*/
+        getComments();
         codeAddress();
         getDescription();
         getTwitter();
         getGooglenews();
+        getBing();
+        getNYTimes();
+        getGuardian();
         getFlickr();  
         getVid();
         showResults();
-
-
     });
-
-
-/*  $('#addComment').click(function() {
-      queryTerm = $('#myinput').val();
-      addComments();
-
-    }); */
 });
 
 

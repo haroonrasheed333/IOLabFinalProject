@@ -68,10 +68,10 @@ text-align:left;
 
 } 
 #imgyoutube {
-	height: 150px;
-	width: 185px;
-	padding:5px;
-	border:3px;
+	height: 120px;
+	width: 110px;
+	padding:7px;
+	border:5px;
 } 
 
 #mediadivtop1 ul li {
@@ -121,23 +121,12 @@ text-align:left;
 }
 
 #contents{
-	width:80%;
+	width:78%;
 	height:100%;
 	float:left;
 }
 
-#comments
-{	
-	background-color:Yellow;
-	width:16%;
-	height:100%;
-	float:right;
-	margin-right:3%;
-	margin-left:-2%;
-}
-
 body { 
-  background: url(../img/bg1.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -200,7 +189,7 @@ html {overflow-y: scroll;}
 	padding:5px;
 	clear:both;
 	margin:auto;
-	height:500px;
+	height:800px;
 	width:80%;
 }
 #newsdivtop
@@ -307,7 +296,111 @@ html {overflow-y: scroll;}
 
 	margin:5px;
 	background-color:Black;
+	
+}
+#bnews{
+
+	margin:5px;
+	background-color:Black;
+	
+}
+#nynews{
+
+	margin:5px;
+	background-color:Black;
+
+	
+}
+#guardnews{
+
+	margin:5px;
+	background-color:Black;
 	overflow:auto;
 	
 }
+
+#comments
+{	
+	border: 4px solid gray;
+	width:16%;
+/*	background:'#808080';
+*/	height:100%;
+	float:right;
+	margin-right:3%;
+	margin-left:-2%;
+	moz-border-radius:10px;  /* for Firefox */
+	-webkit-border-radius:10px; /* for Webkit-Browsers */
+	border-radius:10px; 
+}
+
+ol.timeline
+	{
+	color: #84BBD0;
+	font-family: arial;
+	font-size: small;
+	list-style:none;
+	font-size:1em;
+	padding:10px;
+	margin:10px;
+	color:white;
+	}
+	
+	
+ol.timeline li
+	{
+	color: #84BBD0;
+	font-family: arial;
+	background:'#CCC';
+	font-size: small;
+	width:100%;
+	padding:.4em 0 .2em 0;
+	border-bottom:#dedede dashed 1px;
+	}
+#post_id_no{
+	display: none;
+}
+
+#flash
+	{
+	margin-left:10px;
+	}
+input
+	{
+	margin:10px;
+	font-size:14px;
+	border:#666666 solid 2px;
+	height:24px;
+	margin-bottom:10px;
+	width:50%;
+
+	}
+#comm{
+	padding: 10px;
+}
+#comment
+	{
+	background: '#A9A9A9';
+	margin:10px;
+	color:#84BBD0;
+	font-family:georgia,serif;font-size:medium;
+	border:#666666 solid 2px;
+	height:124px;
+	margin-bottom:10px;
+	width:80%;
+	}
+.titles{
+	font-size:13px;
+	padding-left:10px;
+	}
+.sub{
+	color: #84BBD0;
+	font-family: arial;
+	font-size:16px;
+}
+
+.star
+	{
+	color:#FF0000; font-size:16px; font-weight:bold;
+	padding-left:5px;
+	}
 
