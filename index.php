@@ -21,8 +21,8 @@
     <link href="css/index.css" rel="stylesheet" media="screen">
   </head>  
   <body>
-	<div id="wrapper">
-    <div class="container">
+       <div class="wrapper">
+        <div class="container">
               <div id="title"><p>University Briefs...</p></div>
               <div id="bkimg"><img style="height:400px width:400px;" src="img/univ.png"/></div>
             <div id="searchbtn" style="float:left">
@@ -42,12 +42,14 @@
             </div>
         </div>
     
-	<div id="contents" style="display: none">
+        <div id="contents" style="display: none">
 
           <!--<div id="wikihead"></div> -->
           
           <div id="wikidiv">
-              <div id="wikidiv1">           
+            <h3>INFO</h3>
+              <div id="wikidiv1">
+                
               </div>
               <div id="wikidiv2"> </div>
           </div>
@@ -93,7 +95,7 @@
                 </div>
                 <div id="newsdivtop2">
                   <h3>BING</h3>
-                      <div id="bnews">
+                    <div id="bnews">
                      <ul id="bingnews"></ul>
                    </div>
                 </div>
@@ -115,15 +117,10 @@
             </div>
 
           </div>
+          <div id="blog">
+          </div>
     
 
-	</div>
-
-	<div id="comments">
-		wrgerg
-	
-	
-	</div>
-	</div>
+</div>
   </body>
 </html>
