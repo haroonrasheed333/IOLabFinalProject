@@ -163,39 +163,66 @@
       }
 
 
-       function getNYTimes(){
-        $('#nytimes').empty();
-        var query1 = queryTerm;
-      // query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
-        var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + query1 + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
-      // var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
-      // $.getJSON(phpproxy, {"url": articleURL}, function(data){
-      $.getJSON(articleURL, function(data){
+    function getNYTimes(input) {
+    var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=university+of+california+berkeley&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303';
+    var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
+    $.getJSON(phpproxy, {"url": articleURL}, function(data){
         console.log(data.results);
         var h = document.createElement('h1');
-          $(h).append("NYTIMES");
-          $('#nytimes').append(h);
+            $(h).append("NYTIMES");
+            $('#nytimes').append(h);
         var html = ['<ul class="news">'];
         for (var i = 0; i < 5; i++)  {
-            var url = data.results[i].url;        
-            var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303&callback=?';
-            $.getJSON(newsURL, function(data2){
-              console.log(data2);
-              result = data2.results[0];
-              title = result.title;
-              abstract = result.abstract;
-              urll = result.url;
-              console.log(title);
-              //html.push('<li>Title: ', title , ' Abstract: ', abstract, ' url=', urll , '</li>');
-              $('<li></li>').html('Title: ' + title + ' Abstract: ' + abstract + ' url=' + urll)
-                .appendTo('.news');
+            var url = data.results[i].url;            
+            var phpproxy2 = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?'
+            var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303';
+            $.getJSON(phpproxy2, {"url": newsURL}, function(data2){
+                console.log(data2);
+                result = data2.results[0];
+                title = result.title;
+                abstract = result.abstract;
+                urll = result.url;
+                console.log(title);
+                //html.push('<li>Title: ', title , ' Abstract: ', abstract, ' url=', urll , '</li>');
+                $('<li></li>').html('Title: ' + title + ' Abstract: ' + abstract + ' url=' + urll)
+                .appendTo('#nytimes');
             });
-          }
-          html.push('</ul><br/>');
-          document.getElementById('news2').innerHTML = html.join('');
+        }
+        html.push('</ul><br/>');
+        document.getElementById('news2').innerHTML = html.join('');
 
-      });
-    }
+    });
+}
+    // Function to get comments from database
+      function getComments(){
+
+        $('#comments').empty();
+        var Query = queryTerm;
+        Query = Query.replace(/\s+/g,"%20");
+        var commentURL = 'http://127.0.0.1:8888/comments?query='+Query +'&callback=?';
+        
+        $.getJSON(commentURL, function(json){
+          googleResults = json.results;
+          console.log(googleResults.length)
+          if(googleResults.length == 0)
+          {
+              console.log("No News from GoogleNews");
+          }
+          else 
+          {  
+              for(var i = 0; i < googleResults.length; i++) 
+              {
+                 var newsContent = googleResults[i].content
+                 newsContent = newsContent.replace(/<b>/g,"");
+                  newsContent = newsContent.replace(/<\/b>/g,"");     
+     
+                $('#googlenews').append('<li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">"'+ googleResults[i].titleNoFormatting+'</li>');
+
+              }  
+                   
+            };
+          });
+      }
 
  
 
@@ -264,6 +291,7 @@
         getDescription();
         getTwitter();
         getGooglenews();
+        getComments();
         getFlickr();
         getVid();
         getNYTimes();

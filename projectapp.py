@@ -21,8 +21,7 @@ def index():
                 'index.html')
 
 
-
-@app.route("/blog", methods=['POST'])
+@app.route("/comments", methods=['GET'])
 def create():
     try:
         app.logger.debug("Entered POST")

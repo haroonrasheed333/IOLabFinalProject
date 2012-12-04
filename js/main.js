@@ -105,7 +105,7 @@
                  newsContent = newsContent.replace(/<b>/g,"");
                   newsContent = newsContent.replace(/<\/b>/g,"");     
      
-                $('#googlenews').append('<li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">"'+ googleResults[i].titleNoFormatting+'</li>');
+                $('#googlenews').append('<li class="term"><a href="'+googleResults[i].signedRedirectUrl+'" title="'+newsContent+'">'+ googleResults[i].titleNoFormatting+'</li>');
 
               }  
                    
@@ -126,73 +126,37 @@
           for (var i = 0 ; i < items.length; i++)
           {
             var item = items[i];
-            $('#bing').append('<li class="term"><a href="'+item.Url+'" title="'+item.Description+'">"'+ item.Title+'</li>');
+            $('#bing').append('<li class="term"><a href="'+item.Url+'" title="'+item.Description+'">'+ item.Title+'</li>');
           
           }
         }
       });
     }
     // Function to get NY Times News
-      function getNYTimes1(){
-
-        $('#nytimes').empty();
-        var Query = queryTerm;
-        Query = Query.replace(/\s+/g,"+");
-        var URL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + Query + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
-        $.getJSON(URL, function(json){
-          Results = json.results;
-          console.log(googleResults.length)
-          if(Results.length == 0)
-          {
-              console.log("No News from NY Times");
-          }
-          else 
-          {  
-              for(var i = 0; i < Results.length; i++) 
-              {
-                 var newsContent = Results[i].content
-                 newsContent = newsContent.replace(/<b>/g,"");
-                  newsContent = newsContent.replace(/<\/b>/g,"");     
-     
-                $('#NYTimes').append('<li class="term"><a href="'+Results[i].signedRedirectUrl+'" title="'+newsContent+'">"'+ Results[i].titleNoFormatting+'</li>');
-
-              }  
-                   
-            };
-          });
-      }
-
-
        function getNYTimes(){
         $('#nytimes').empty();
-        var query1 = queryTerm;
-      // query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
+       query1 = document.getElementById("myinput").value.replace(/ /g,"+").toLowerCase();
         var articleURL = 'http://api.nytimes.com/svc/search/v1/article?format=json&query=' + query1 + '&api-key=579c0d468cffcc963fc547b5e45cb65c:14:66734303&callback=?';
-      // var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
-      // $.getJSON(phpproxy, {"url": articleURL}, function(data){
-      $.getJSON(articleURL, function(data){
+       var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp.php?callback=?'
+       $.getJSON(phpproxy, {"url": articleURL}, function(data){
         console.log(data.results);
-        var h = document.createElement('h1');
-          $(h).append("NYTIMES");
-          $('#nytimes').append(h);
-        var html = ['<ul class="news">'];
         for (var i = 0; i < 5; i++)  {
             var url = data.results[i].url;        
             var newsURL = 'http://api.nytimes.com/svc/news/v3/content.json?&url='+url+'&api-key=6b8d475bf3699ab7851fc40722dc1235:7:66734303&callback=?';
-            $.getJSON(newsURL, function(data2){
+            var phpproxy2 = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?'
+            $.getJSON(phpproxy2, {"url": newsURL}, function(data2){
               console.log(data2);
               result = data2.results[0];
               title = result.title;
               abstract = result.abstract;
               urll = result.url;
               console.log(title);
-              //html.push('<li>Title: ', title , ' Abstract: ', abstract, ' url=', urll , '</li>');
-              $('<li></li>').html('Title: ' + title + ' Abstract: ' + abstract + ' url=' + urll)
-                .appendTo('.news');
+            $('#nytimes').append('<li class="term"><a href="'+urll+'" title="'+abstract+'">'+ title+'</li>');
+
+             
             });
           }
-          html.push('</ul><br/>');
-          document.getElementById('news2').innerHTML = html.join('');
+          
 
       });
     }
