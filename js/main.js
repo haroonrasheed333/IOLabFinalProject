@@ -43,7 +43,10 @@
 
       var freebaseURL =  'https://www.googleapis.com/freebase/v1/text/en/'+ university;
       console.log(freebaseURL);
-      $.getJSON(freebaseURL, function(json){
+      var phpproxy = 'http://people.ischool.berkeley.edu/~haroon/IOLab/samp2.php?callback=?';
+      $.getJSON(phpproxy, {"url": freebaseURL}, function(json){
+       
+      //$.getJSON(freebaseURL, function(json){
         var feed = json.result;
         console.log(feed);
         $("#wikidiv1").append('<p id="description">' + feed + '</p>');
